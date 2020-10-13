@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album tracks</title>
+</head>
+
+<body>
+
+
+    <table class="tracks-container">
+        <tr style="font-size: 22px; background-color: rgb(61, 59, 59); color: white">
+            <th>Title</th>
+            <th>Listen</th>
+        </tr>
+
+        {{#each track}}
+        <tr>
+            <td>
+                <h2 style="font-size: 16px">{{name}}</h2>
+            </td>
+
+            <td>
+                <audio controls src={{preview_url}}>Your browser does not support the audio element</audio>
+            </td>
+        </tr>
+        {{/each}}
+
+
+    </table>
+
+</body>
+
+</html>

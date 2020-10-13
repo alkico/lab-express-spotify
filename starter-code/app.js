@@ -65,6 +65,20 @@ app.get("/albums/:artistId", (req, res, next) => {
     );
 });
 
+app.get("/tracks/:albumId", (req, res) => {
+  console.log(req.params.albumId, "test ALBUM ID");
+  spotifyApi
+  .getAlbumTracks(req.params.albumId)
+  .then(function(data){
+    console.log("track search:", data.body.items);
+    res.render("tracks", {track: data.body.items}); 
+  })
+  .catch(
+    (err) => console.log("The error occurred while loading albums: ", err) //I'm getting an error but the albums are loading. Don't get it.
+  );
+});
+
+
 app.listen(3000, () =>
   console.log("My Spotify project running on port 3000 🎧 🥁 🎸 🔊")
 );
