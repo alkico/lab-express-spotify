@@ -4,19 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist</title>
 </head>
 
 <body>
 
 
-    <div class="albums-container">
+    <div class="results-container">
         {{#each album }}
-        <h1>{{name}}</h1>
-        <div>{{cover}}</div>
-        <img src={{images.1.url}} alt="album image">
-        <button type="submit"><a style="text-decoration: none; color: white" href="/tracks/{{id}}">View
-                tracks</a></button>
+        <div>
+            <img src={{images.1.url}} alt="album image">
+            <div class="search-results-div">{{cover}}
+                <h2>{{name}}</h2>
+                <button class="pink-btn" type="submit"><a href="/tracks/{{id}}">View
+                        tracks</a></button>
+            </div>
+        </div>
         {{/each}}
     </div>
 

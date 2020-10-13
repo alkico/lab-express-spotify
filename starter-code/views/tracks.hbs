@@ -10,8 +10,8 @@
 <body>
 
 
-    <table class="tracks-container">
-        <tr style="font-size: 22px; background-color: rgb(61, 59, 59); color: white">
+    <table>
+        <tr id="table-header">
             <th>Title</th>
             <th>Listen</th>
         </tr>
@@ -19,7 +19,7 @@
         {{#each track}}
         <tr>
             <td>
-                <h2 style="font-size: 16px">{{name}}</h2>
+                <h2>{{name}}</h2>
             </td>
 
             <td>

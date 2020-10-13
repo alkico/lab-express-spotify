@@ -1,4 +1,73 @@
-/* .albums-container {
+#index-body {
+  background-image: url("/images/spotify-background.jpeg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+#artist-search-div {
+  background-color: rgba(255, 255, 255, 0.4);
+  height: 100px;
+  width: 300px;
+  margin-top: 20vh;
+}
+
+.artist-search-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pink-btn {
+  margin-top: 5px;
+  background-color: salmon;
+  border: none;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+.pink-btn > a {
+  text-decoration: none;
+  color: white;
+}
+
+.results-container {
   display: grid;
   grid-template-columns: auto auto auto;
-} */
+}
+
+.results-container > div {
+  margin: 10px;
+}
+
+.results-container > div > img {
+  height: 250px;
+  width: 250px;
+}
+
+.search-results-div {
+  color: white;
+  background-color: grey;
+  width: 250px;
+  height: auto;
+  text-align: center;
+}
+
+.search-results-div > h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+th {
+  font-size: 26px;
+  background-color: rgb(61, 59, 59);
+  color: white;
+  text-align: left;
+}
+
+td > h2 {
+  font-size: 16px;
+}

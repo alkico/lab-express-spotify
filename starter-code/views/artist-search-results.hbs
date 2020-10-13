@@ -4,24 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist</title>
 </head>
 
 <body>
 
-    <div class="artist-container" style="display: grid;  grid-template-columns: auto auto auto">
-        <!--Object structure: data.body => artists (an object) => items (an array of all the individual artist objects)-->
+    <div class="results-container">
+        <!--Object structure: data.body => artists (an object) => items tyle="display: grid;  grid-template-columns: auto auto auto"(an array of all the individual artist objects)-->
         {{#each artist}}
-        <!--artist here refers to the key I assigned to the object in res.render line 46 of app.js file-->
-        <div style="margin: 10px">
-            <img style="height: 250px; width: 250px" src="{{images.[0].url}}" alt="artist image">
-            <div style="color: white; background-color: grey; width: 250px; : auto; text-align: center">
-                <h2 style="margin: 0; font-size: 18px">{{name}}</h2>
-                <button style="border-radius: 5px; background-color: salmon; border: none; padding: 5px; margin: 2px"
-                    type="submit"><a style="text-decoration: none; color: white" href="/albums/{{id}}">View
+        <!--artist here refers to the key I assigned to the object in res.render in GET request in app.js file-->
+        <div>
+            <img src="{{images.[0].url}}" alt="artist image">
+            <div class="search-results-div">
+                <h2>{{name}}</h2>
+                <button class="pink-btn" type="submit"><a href="/albums/{{id}}">View
                         albums</a></button>
             </div>
-            </form>
         </div>
         {{/each}}
     </div>

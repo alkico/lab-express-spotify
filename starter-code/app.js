@@ -2,9 +2,8 @@ require("dotenv").config();
 
 const express = require("express");
 const hbs = require("hbs");
-const path = require("path");
 
-// require spotify-web-api-node package here:
+//Require spotify-web-api-node package
 const SpotifyWebApi = require("spotify-web-api-node");
 
 const app = express();
@@ -13,13 +12,13 @@ app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
 
-// setting the spotify-api goes here:
+//Set up the spotify-api
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
 });
 
-// Retrieve an access token
+// Retrieve access token
 spotifyApi
   .clientCredentialsGrant()
   .then((data) => spotifyApi.setAccessToken(data.body["access_token"]))
@@ -27,7 +26,7 @@ spotifyApi
     console.log("Something went wrong when retrieving an access token", error)
   );
 
-// Our routes go here:
+//Routes
 app.get("/", function (req, res) {
   res.render("index");
 });
@@ -41,8 +40,7 @@ app.get("/artist-search", function (req, res) {
         data.body.artists.items
         //path to images - data.body.artists.items[0].images[0].url
       );
-      // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
-      //object structure: data.body => artists (an object) => items (an array of all the individualartist objects)
+      // AFTER RECEIVING THE DATA FROM THE API, render it as follows:
       res.render("artist-search-results", { artist: data.body.artists.items });
     })
     .catch((err) =>
@@ -51,12 +49,11 @@ app.get("/artist-search", function (req, res) {
 });
 
 app.get("/albums/:artistId", (req, res, next) => {
-  // .getArtistAlbums() code goes here
-  console.log(req.params.artistId, "test");
+  // console.log(req.params.artistId, "test");
   spotifyApi
     .getArtistAlbums(req.params.artistId)
     .then(function (data) {
-      console.log(data.body.items);
+      // console.log(data.body.items);
       //res.send(data.body.items);
       res.render("albums", { album: data.body.items });
     })
@@ -66,15 +63,13 @@ app.get("/albums/:artistId", (req, res, next) => {
 });
 
 app.get("/tracks/:albumId", (req, res) => {
-  console.log(req.params.albumId, "test ALBUM ID");
   spotifyApi
   .getAlbumTracks(req.params.albumId)
   .then(function(data){
-    console.log("track search:", data.body.items);
     res.render("tracks", {track: data.body.items}); 
   })
   .catch(
-    (err) => console.log("The error occurred while loading albums: ", err) //I'm getting an error but the albums are loading. Don't get it.
+    (err) => console.log("The error occurred while loading albums: ", err)
   );
 });
 
