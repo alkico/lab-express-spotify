@@ -33,7 +33,7 @@ app.get("/", function (req, res) {
 
 app.get("/artist-search", function (req, res) {
   spotifyApi
-    .searchArtists(req.query.artist)
+    .searchArtists(req.query.artistq) //artistq b/c this is the name assigned in the form in index.hbs
     .then((data) => {
       console.log(
         "The received data from the API: ",
@@ -62,9 +62,9 @@ app.get("/albums/:artistId", (req, res, next) => {
     );
 });
 
-app.get("/tracks/:albumId", (req, res) => {
+app.get("/tracks/:albumIdhere", (req, res) => {
   spotifyApi
-  .getAlbumTracks(req.params.albumId)
+  .getAlbumTracks(req.params.albumIdhere)
   .then(function(data){
     res.render("tracks", {track: data.body.items}); 
   })
